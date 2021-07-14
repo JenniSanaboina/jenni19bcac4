@@ -1,0 +1,27 @@
+class TwinPrime
+{
+public static void main(String args[])
+{
+NewClassTwin obj=NewClassTwin();
+Scanner sc=new Scanner(System.in);
+System.out.println("enter the lower range");
+int p=sc.nextInt();
+System.out.printl("enter the upper range");
+if(p>q)
+{
+System.out.println("invalid range");
+}
+else
+{
+System.out.println("twin prime numbers within the given range");
+for(int i=p;i<=q;i++)
+{
+if (obj.isPrime(i)==true && obj.isPrime(i+2)==true)
+{
+System.out.println("+i",+(i+2)+"");
+}
+}
+}
+}
+
+
