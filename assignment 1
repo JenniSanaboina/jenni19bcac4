@@ -1,0 +1,209 @@
+package SingleLinkedList;
+
+public class Node 
+{
+  int data;
+  Node next;
+}
+package SingleLinkedList;
+import java.util.*;
+
+public class LinkedList 
+{
+  Node head=null;
+  public Scanner s=new Scanner(System.in);
+  
+  public void create()
+  {
+    System.out.println("Enter No of data: ");
+    int n=s.nextInt();
+    
+    int A[]=new int[n];
+    for(int i=0;i<n;i++)
+    {
+      System.out.println("Enter "+(i+1)+" Value");
+      A[i]=s.nextInt();
+    }
+     for(int i=0;i<n;i++)
+    {
+      Node temp=new Node();
+      temp.data=A[i];
+      temp.next = null;
+      
+      if(head==null)
+      {
+        head=temp;
+      }
+      else
+      {
+        Node p=head;
+        while(p.next!=null)
+        {
+          p=p.next;
+          }
+    
+    }
+  }
+  
+  public void display()
+    {
+      if (head==null)
+        System.out.println("SLL is Empty");
+      else
+      {
+        Node p=head;
+        while(p!=null)
+        {
+          System.out.print("->"+p.data);
+          p=p.next;
+        }
+      }
+        
+    }
+  
+  public void insert_at_end()
+  {
+    System.out.println("Enter the element: ");
+     int ele=s.nextInt();
+    Node temp =new Node();
+    temp.data=ele;
+    temp.next=null;
+    if(head==null)
+    {
+      head=temp;
+    }
+    else
+    {
+      Node p;
+      for(p=head;p.next!=null;p=p.next);
+      p.next =temp; 
+    }
+  }
+  
+  public void insert_at_first()
+  {
+    System.out.println("Enter the element: ");
+    int ele=s.nextInt();
+    Node temp =new Node();
+    temp.data=ele;
+    temp.next=null;
+    Node p=head;
+    head =temp;
+    temp.next=p;
+  }
+  
+  public void insert_at_any_position()
+  {
+    System.out.println("Enter the element and position ");
+        int ele=s.nextInt();
+    int pos=s.nextInt();
+    Node temp =new Node();
+    temp.data=ele;
+    temp.next=null;
+    int i;
+    Node p,t=null;
+    for(p=head,i=1;i<pos;p=p.next,i++)
+      t = p;
+    t.next=temp;
+    temp.next=p;
+    
+      
+  }
+  
+  public void delete_at_end()
+  {
+    int ele;
+    Node p,t=null;
+    for(p=head;p.next!=null;p=p.next)
+      t=p;
+    t.next=null;
+    ele=p.data;
+    //free(p);
+    System.out.println("The deleted data is ="+ele);
+     }
+  
+  public void delete_at_first()
+  {
+    int ele;
+    ele=head.data;
+    head=head.next;
+    System.out.println("The deleted data is ="+ele);
+  }
+  
+  public void delete_at_any_position()
+  {
+    int i,pos,ele;
+    System.out.println("Enter the position to be deleted");
+    pos=s.nextInt();
+    
+    Node p,t=null;
+    for(p=head,i=1;i<pos;p=p.next,i++)
+      t=p;
+    ele=p.data;
+    t.next=p.next;
+    System.out.println("The deleted data is ="+ele);
+    
+  }
+  
+  public void  reverse_sll()
+  {
+    int stk[]=new int[20];
+    int top=-1;
+    Node p;
+    for(p=head;p!=null;p=p.next)
+      stk[++top]=p.data;
+    for(int i=top;i>=0;i--)
+      System.out.print("-> "+stk[i]);
+  }
+}
+public class SLLDemo 
+{
+  public static void main(String args[])
+  {
+    Scanner s=new Scanner(System.in);
+    LinkedList l=new LinkedList();
+    
+    while(true)
+    {
+      System.out.println("\n** Menu **");
+      System.out.println("1.Create a SLL");
+      System.out.println("2.Display SLL");
+      System.out.println("3.Insert at end");
+      System.out.println("4.Insert at first");
+      System.out.println("5.Insert at any position");
+      System.out.println("6.Delete at end");
+      System.out.println("7.Delete at first");
+      System.out.println("8.Delete at any position");
+      System.out.println("9.To display in reverse");
+      System.out.println("10.Exit");
+      System.out.println("Enter your choice");
+      int cho=s.nextInt();
+      
+      switch(cho)
+       {
+        case 1:  l.create();
+            break;
+        case 2:  l.display();
+            break;
+        case 3:  l.insert_at_end();
+            break;
+        case 4:  l.insert_at_first();
+            break;
+        case 5:  l.insert_at_any_position();
+            break;
+        case 6:  l.delete_at_end();
+            break;
+        case 7:  l.delete_at_first();
+            break;
+        case 8:  l.delete_at_any_position();
+            break;
+        case 9: l.reverse_sll();
+            break;
+        case 10:System.out.println("Program Exit");
+            System.exit(0);
+        
+        default:System.out.println("Please Enter no from 1 to 10");
+      }
+    }
+  }
+}
