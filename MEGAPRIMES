@@ -1,0 +1,45 @@
+import java.math.sqrt;
+fun main() {
+    val start = 1;
+    val end = 100;
+    var sum = 0;
+    (start..end).forEach {
+        if (isMegaPrime(it)) {
+            sum += it;
+            println(it);
+        }
+    }
+    println(sum);
+}
+ 
+fun isMegaPrime(num: Int): Boolean {
+    val digits = getDigits(num);
+    return if (!isPrime(num))
+        false
+    else
+        digits.none { !isPrime(it) }
+}
+ 
+fun getDigits(num: Int): List<Int> {
+    var temp = num;
+    val digits: MutableList<Int> = mutableListOf();
+    while (temp != 0) {
+        val digit = temp % 10;
+        temp /= 10
+        digits.add(digit)
+    }
+    digits.reverse();
+    return digits.toList();
+}
+ 
+fun isPrime(num: Int): Boolean {
+    if (num <= 1) return false
+    for (i in 2..sqrt(num.toDouble()).toInt()) {
+        if (num % i == 0)
+            return false
+    }
+    return true
+}
+
+
+ 
