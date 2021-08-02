@@ -1,0 +1,31 @@
+class Prefix
+{
+static void prefixFactorialArray(int A[], int N)
+{
+for(int i = 1; i < N; i++)
+    {
+        A[i] += A[i - 1];
+    }
+    int fact[] = new int[A[N - 1] + 1];
+    fact[0] = 1;
+     for(int i = 1; i <= A[N - 1]; i++)
+    {
+        fact[i] = i * fact[i - 1];
+    }
+     for(int i = 1; i <= A[N - 1]; i++)
+    {
+        fact[i] = i * fact[i - 1];
+    }
+    for(int i = 0; i < N; i++)
+    {
+        System.out.print(A[i] + " ");
+    }
+}
+public static void main(String[] args)
+{
+    int arr[] = { 1, 2, 3, 4 };
+    int N = arr.length;
+     
+    prefixFactorialArray(arr, N);
+}
+}
